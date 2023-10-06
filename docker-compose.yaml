@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  sakura:
+    build: ./sakura
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    networks:
+      - sakura_net
+  
+  redis:
+    image: redis:latest
+    networks:
+      - sakura_net
+
+networks:
+  sakura_net:
